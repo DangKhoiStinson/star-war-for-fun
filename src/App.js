@@ -26,7 +26,7 @@ class App extends React.Component {
           </div>
         ));
         const brown = this.state.person.filter(i => i.hair_color === "brown");
-        const brown_list = brown.map(i =>
+        const brown_people = brown.map(i =>
             <div id={i.name} key={i.name+1}>
             <p><strong>{i.name}</strong></p>
           </div>
@@ -36,7 +36,7 @@ class App extends React.Component {
               {list}
               <br />
               <div> Those who has brown hair are : <br />
-              {brown_list}
+              {brown_people}
               </div>
             </div>
         );
