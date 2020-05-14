@@ -22,7 +22,7 @@ class App extends React.Component {
     render() {
         const list = this.state.person.map((i) => (
           <div id={i.name} key={i.name+1}>
-            <p>{i.name}, who has {i.hair_color==="n/a" ? "no": i.hair_color} hair, is {i.height} centimeters tall. </p>
+            <p><strong>{i.name}</strong>, who has {i.hair_color==="n/a" ? "no": i.hair_color} hair, is {i.height} centimeters tall. </p>
           </div>
         ));
         return (
