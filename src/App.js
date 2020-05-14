@@ -1,26 +1,36 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = ({
+            person: []
+        });
+    }
+    componentDidMount() {
+        fetch("https://swapi.dev/api/people/?page=2")
+            .then(res => res.json())
+            .then(
+                (result) => {
+                    this.setState({
+                        person: result.results
+                    });
+                }
+            )
+    }
+    render() {
+        const list = this.state.person.map((i) => (
+          <div id={i.name} key={i.name+1}>
+            <p>{i.name}, who has {i.hair_color==="n/a" ? "no": i.hair_color} hair. </p>
+          </div>
+        ));
+        return (
+            <div className="container">
+              {list}
+            </div>
+        );
+    }
 }
 
 export default App;
